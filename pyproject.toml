@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "termchat"
+version = "1.0.0"
+description = "Lightweight universal terminal AI chat assistant - Multi-LLM backend, streaming output, session management, Markdown rendering"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "gitstq", email = "gitstq@users.noreply.github.com"}
+]
+keywords = ["cli", "ai", "chat", "terminal", "llm", "openai", "deepseek", "ollama", "gpt", "tui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "rich>=13.0.0",
+    "prompt_toolkit>=3.0.0",
+    "httpx>=0.25.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+termchat = "termchat.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gitstq/termchat"
+Repository = "https://github.com/gitstq/termchat"
+Issues = "https://github.com/gitstq/termchat/issues"
+Changelog = "https://github.com/gitstq/termchat/releases"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
